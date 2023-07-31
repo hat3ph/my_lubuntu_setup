@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install additional packages
-sudo apt-get install redshift-gtk zip
+sudo apt-get install redshift-gtk rar
 
 cp ./config/lxqt/*.conf $HOME/.config/lxqt/
 cp ./config/autostart/*.desktop $HOME/.config/autostart/
