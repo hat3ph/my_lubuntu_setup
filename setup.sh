@@ -8,5 +8,5 @@ cp ./config/autostart/*.desktop $HOME/.config/autostart/
 cp ./config/redshift.conf $HOME/.config/
 
 # create file-manager actions for unzip zip files
-mkdir -p $HOME/.local/share/file-manager/actioins
+mkdir -p $HOME/.local/share/file-manager/actions
 cp ./local/share/file-manager/actions/*.desktop $HOME/.local/share/file-manager/actions/
