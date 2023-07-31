@@ -11,5 +11,6 @@ cp ./config/redshift.conf $HOME/.config/
 mkdir -p $HOME/.local/share/file-manager/actions
 # actions file for extract rar file
 cp ./local/share/file-manager/actions/rar-*.desktop $HOME/.local/share/file-manager/actions/
+echo "Remember to change PCManFM-Qt's Archiver intergration to lxqt-archiver under Preferences > Advanced."
 # actions to open terminal in desktop. Not need for LXQt v1.3
 cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/share/file-manager/actions/
