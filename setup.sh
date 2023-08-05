@@ -24,3 +24,10 @@ mkdir -p $HOME/.icons
 wget -P /tmp http://buuficontheme.free.fr/buuf3.42.tar.xz
 tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
 echo "Remember to logoff and choose the new icon themes from LXQt Apperance Configuration."
+
+# setup my customer bash alias
+cat >> $HOME/.bashrc << 'EOF'
+
+alias temps='watch -n 1 sensors amdgpu-* drivetemp-* k10temp-* asus_wmi_sensors-*'
+alias syslog='tail -f /var/log/syslog'
+EOF
