@@ -24,6 +24,11 @@ mkdir -p $HOME/.icons
 wget -P /tmp http://buuficontheme.free.fr/buuf3.42.tar.xz
 tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
 
+# buuf icon from robson-66
+git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
+mkdir -p $HOME/.icons
+cp -r /tmp/Buuf $HOME/.icons
+
 # setup buuf-icons-for-plasma icon theme
 git clone https://www.opencode.net/phob1an/buuf-icons-for-plasma.git /tmp/buuf-icons-for-plasma
 mkdir -p $HOME/.icons/buuf-icons-for-plasma
