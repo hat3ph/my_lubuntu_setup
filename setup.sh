@@ -19,10 +19,16 @@ echo "Remember to change PCManFM-Qt's Archiver intergration to lxqt-archiver und
 # actions to open terminal in desktop. Not need for LXQt v1.3
 cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/share/file-manager/actions/
 
-# setup buuf icon themes
+# setup buuf icon theme
 mkdir -p $HOME/.icons
 wget -P /tmp http://buuficontheme.free.fr/buuf3.42.tar.xz
 tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
+
+# setup buuf-icons-for-plasma icon theme
+git clone https://www.opencode.net/phob1an/buuf-icons-for-plasma.git /tmp/buuf-icons-for-plasma
+mkdir -p $HOME/.icons/buuf-icons-for-plasma
+cp -r /tmp/buuf-icons-for-plasma/{16x16,22x22,32x32,48x48,64x64,128x128,index.theme,licenses} $HOME/.icons/buuf-icons-for-plasma
+
 echo "Remember to logoff and choose the new icon themes from LXQt Apperance Configuration."
 
 # setup my customer bash alias
