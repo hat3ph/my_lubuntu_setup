@@ -1,7 +1,24 @@
 #!/bin/bash
 
 # install additional packages
-sudo apt-get install redshift-gtk rar -y
+sudo apt-get install redshift-gtk rar lm-sensors -y
+
+# setup disk drive temp module
+echo drivetemp | sudo tee /etc/modules-load.d/drivetemp.conf
+
+# setup sensors for ASUS X370 Crosshair
+sudo cat > /etc/sensors.d/asus_wmi_sensors.conf << 'EOF'
+chip "asus_wmi_sensors-virtual-0"
+
+ignore fan4 # chassis fan 3
+ignore fan5 # CPU optional fan
+ignore fan6 # water pump
+ignore fan7 # CPU opt fan
+ignore fan8 # water flow
+ignore temp5 # Tsensor 1 temp
+ignore temp7 # water in temp
+ignore temp8 # water out temp
+EOF
 
 # copy my LXQt and autostart configuration
 mkdir -p $HOME/.config/{lxqt,autostart}
