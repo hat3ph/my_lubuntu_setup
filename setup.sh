@@ -42,7 +42,7 @@ wget -P /tmp http://buuficontheme.free.fr/buuf3.42.tar.xz
 tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
 
 # buuf icon from robson-66
-git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
+git clone --depth=1 https://github.com/robson-66/Buuf.git /tmp/Buuf
 mkdir -p $HOME/.icons/Buuf
 #cp -r /tmp/Buuf/* $HOME/.icons/Buuf
 rsync -rv --exclude=.git /tmp/Buuf/ $HOME/.icons/Buuf
