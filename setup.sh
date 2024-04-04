@@ -51,6 +51,11 @@ git clone https://www.opencode.net/phob1an/buuf-icons-for-plasma.git /tmp/buuf-i
 mkdir -p $HOME/.icons/buuf-icons-for-plasma
 cp -r /tmp/buuf-icons-for-plasma/{16x16,22x22,32x32,48x48,64x64,128x128,index.theme,licenses} $HOME/.icons/buuf-icons-for-plasma
 
+# install Gruvbox-Plus-Dark icon theme
+git clone https://github.com/SylEleuth/gruvbox-plus-icon-pack.git /tmp/gruvbox-plus-icon-pack
+mkdir -p $HOME/.icons
+cp -r /tmp/gruvbox-plus-icon-pack/Gruvbox-Plus-Dark $HOME/.icons/
+
 echo "Remember to logoff and choose the new icon themes from LXQt Apperance Configuration."
 
 # setup my customer bash alias
