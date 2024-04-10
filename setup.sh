@@ -38,13 +38,13 @@ cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/shar
 
 # setup buuf icon theme
 mkdir -p $HOME/.icons
-wget -P /tmp http://buuficontheme.free.fr/buuf3.42.tar.xz
+wget -P /tmp http://buuficontheme.free.fr/buuf3.46.tar.xz
 tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
 
 # buuf icon from robson-66
-git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
-mkdir -p $HOME/.icons/Buuf
-cp -r /tmp/Buuf/* $HOME/.icons/Buuf && rm -rf $HOME/.icons/Buuf/.git
+#git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
+#mkdir -p $HOME/.icons/Buuf
+#cp -r /tmp/Buuf/* $HOME/.icons/Buuf && rm -rf $HOME/.icons/Buuf/.git
 
 # setup buuf-icons-for-plasma icon theme
 git clone https://www.opencode.net/phob1an/buuf-icons-for-plasma.git /tmp/buuf-icons-for-plasma
