@@ -39,9 +39,14 @@ install () {
      		sudo apt-get install wine64 -y
        		sudo apt-get update
        		sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
-	 		fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth -y
+	 		fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth gamemode -y
 	 	wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
    		sudo dpkg -i /tmp/lutris*.deb
+
+		# install MangoHud
+     		wget -P /tmp https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-0.7.1.tar.gz
+       		tar -zxvf /tmp/MangoHud*.tar.gz -C /tmp
+	 	(cd /tmp/MangoHud && ./mangohud-setup.sh install)
 
      		# download winetrick https://wiki.winehq.org/Winetricks
        		mkdir -p $HOME/.local/bin
