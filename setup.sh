@@ -34,7 +34,7 @@ install () {
      		sudo apt-get install wine64 -y
        		sudo apt-get update
        		sudo apt-get install libgl1:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 zenity python3-cairo -y
-	 	wget -p /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
+	 	wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
    		sudo dpk -i /tmp/lutris*.deb
     	fi
      	
