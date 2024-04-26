@@ -16,7 +16,7 @@ install () {
 	# install additional packages
 	if [[ $extra_apps == "yes" ]]; then
 		sudo apt-get update
-		sudo apt-get install geany transmission-qt rar lm-sensors -y
+		sudo apt-get install vlc geany transmission-qt rar lm-sensors -y
 
   		# install yt-dlp
     		mkdir -p $HOME/.local/bin
@@ -39,7 +39,7 @@ install () {
      		sudo apt-get install wine64 -y
        		sudo apt-get update
        		sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
-	 		fluid-soundfont-gs vulkan-tools -y
+	 		fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth -y
 	 	wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
    		sudo dpkg -i /tmp/lutris*.deb
 
