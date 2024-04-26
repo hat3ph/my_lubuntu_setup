@@ -16,7 +16,12 @@ install () {
 	# install additional packages
 	if [[ $extra_apps == "yes" ]]; then
 		sudo apt-get update
-		sudo apt-get install geany rar lm-sensors -y
+		sudo apt-get install geany transmission-qt rar lm-sensors -y
+
+  		# install yt-dlp
+    		mkdir -p $HOME/.local/bin
+    		wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O $HOME/.local/bin/yt-dlp
+		chmod a+rx $HOME/.local/bin/yt-dlp
 	fi
 
  	# xorg amdgpu tear free
