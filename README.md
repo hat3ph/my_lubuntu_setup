@@ -1,2 +1,2 @@
 # lubuntu_setup
-My Lubuntu 22.04 Desktop Setup
+My Lubuntu 24.04 Minimal Desktop Install Setup
