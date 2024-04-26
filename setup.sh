@@ -5,7 +5,7 @@ firefox_deb=yes # set yes to install firefox from official deb
 sensors=yes # set yes to customize lm-sensors
 lxqt_config=no # set yes to copy customized lxqt config
 redshift_config=yes # set yes to copy customized redshift config
-pcmanfmqt_rar=yes # set yes to enable rar support in pcmanfm-qt
+pcmanfmqt_rar=no # set yes to enable rar support in pcmanfm-qt
 theming=yes # set yes to enable icon and theming
 bashrc=yes # set yes to customized my bashrc
 
@@ -13,7 +13,7 @@ install () {
 	# install additional packages
 	if [[ $extra_apps == "yes" ]]; then
 		sudo apt-get update
-		sudo apt-get install featherpad rar lm-sensors -y
+		sudo apt-get install geany rar lm-sensors -y
 	fi
 	
 	# install firefox from official deb
@@ -86,6 +86,16 @@ install () {
 		git clone https://github.com/SylEleuth/gruvbox-plus-icon-pack.git /tmp/gruvbox-plus-icon-pack
 		mkdir -p $HOME/.icons
 		cp -r /tmp/gruvbox-plus-icon-pack/Gruvbox-Plus-Dark $HOME/.icons/
+
+  		# installl Nordic theme
+    		mkdir -p $HOME/.themes
+		wget -P /tmp https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic.tar.xz
+		tar -xvf /tmp/Nordic.tar.xz -C $HOME/.themes
+
+  		# add additional geany colorscheme
+		mkdir -p $HOME/.config/geany/colorschemes
+		git clone https://github.com/geany/geany-themes.git /tmp/geany-themes
+		cp -r /tmp/geany-themes/colorschemes/* $HOME/.config/geany/colorschemes/
 	fi
 	
 	# setup my customer bash alias
