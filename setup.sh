@@ -1,7 +1,7 @@
 #!/bin/bash
 
 extra_apps=yes # set yes to install extra apps
-amdgpu_tearfree=yes # set yes to enable amdgpu tearfree
+amdgpu_config=yes # set yes to enable amdgpu tearfree
 qemu=yes # set yes to install qemu and virt-manager
 gaming=yes # set yes to install wine and lutris
 firefox_deb=yes # set yes to install firefox from official deb
@@ -24,9 +24,9 @@ install () {
 		chmod a+rx $HOME/.local/bin/yt-dlp
 	fi
 
- 	# xorg amdgpu tear free
-  	if [[ $amdgpu_tearfree == "yes" ]]; then
-		sudo cp ./config/20-amdgpu-tearfree.conf /etc/X11/xorg.conf.d/
+ 	# xorg amdgpu enable tear free & vrr
+  	if [[ $amdgpu_config == "yes" ]]; then
+		sudo cp ./config/20-amdgpu-custom.conf /etc/X11/xorg.conf.d/
    	fi
 
     	# install qemu and virt-manager
@@ -145,7 +145,7 @@ printf "\n"
 printf "Start installation!!!!!!!!!!!\n"
 printf "88888888888888888888888888888\n"
 printf "Install Extra APps      : $extra_apps\n"
-printf "Xorg AMDGPU TearFree    : $amdgpu_tearfree\n"
+printf "Xorg AMDGPU Config      : $amdgpu_config\n"
 printf "QEMU KVM		: $qemu\n"
 printf "Wine and Lutris  	: $gaming\n"
 printf "Firefox as DEB packages : $firefox_deb\n"
