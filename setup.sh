@@ -1,6 +1,7 @@
 #!/bin/bash
 
 extra_apps=yes # set yes to install extra apps
+amdgpu_tearfree=yes # set yes to enable amdgpu tearfree
 firefox_deb=yes # set yes to install firefox from official deb
 sensors=yes # set yes to customize lm-sensors
 lxqt_config=no # set yes to copy customized lxqt config
@@ -15,7 +16,12 @@ install () {
 		sudo apt-get update
 		sudo apt-get install geany rar lm-sensors -y
 	fi
-	
+
+ 	# xorg amdgpu tear free
+  	if [[ $amdgpu_tearfree == "yes" ]]; then
+		sudo cp ./config/20-amdgpu-tearfree.conf /etc/X11/xorg.conf.d/
+   	fi
+    
 	# install firefox from official deb
 	if [[ $firefox_deb == "yes" ]]; then
 		sudo install -d -m 0755 /etc/apt/keyrings
@@ -111,6 +117,7 @@ printf "\n"
 printf "Start installation!!!!!!!!!!!\n"
 printf "88888888888888888888888888888\n"
 printf "Install Extra APps      : $extra_apps\n"
+printf "Xorg AMDGPU TearFree    : $amdgpu_tearfree\n"
 printf "Firefox as DEB packages : $firefox_deb\n"
 printf "Custom lm-sensors config: $sensors\n"
 printf "Custom LXQt Config      : $lxqt_config\n"
