@@ -3,6 +3,7 @@
 extra_apps=yes # set yes to install extra apps
 amdgpu_tearfree=yes # set yes to enable amdgpu tearfree
 qemu=yes # set yes to install qemu and virt-manager
+gaming=yes # set yes to install wine and lutris
 firefox_deb=yes # set yes to install firefox from official deb
 sensors=yes # set yes to customize lm-sensors
 lxqt_config=no # set yes to copy customized lxqt config
@@ -26,6 +27,15 @@ install () {
     	# install qemu and virt-manager
      	if [[ $qemu == "yes" ]]; then
      		sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+    	fi
+
+     	# install wine and lutris
+     	if [[ $gaming == "yes" ]]; then
+     		sudo apt-get install wine64 -y
+       		sudo apt-get update
+       		sudo apt-get install libgl1:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 zenity python3-cairo -y
+	 	wget -p /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
+   		sudo dpk -i /tmp/lutris*.deb
     	fi
      	
 	# install firefox from official deb
@@ -125,6 +135,7 @@ printf "88888888888888888888888888888\n"
 printf "Install Extra APps      : $extra_apps\n"
 printf "Xorg AMDGPU TearFree    : $amdgpu_tearfree\n"
 printf "QEMU KVM		: $qemu\n"
+printf "Wine and Lutris  	: $gaming\n"
 printf "Firefox as DEB packages : $firefox_deb\n"
 printf "Custom lm-sensors config: $sensors\n"
 printf "Custom LXQt Config      : $lxqt_config\n"
