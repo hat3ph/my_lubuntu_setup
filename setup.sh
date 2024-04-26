@@ -2,6 +2,7 @@
 
 extra_apps=yes # set yes to install extra apps
 amdgpu_tearfree=yes # set yes to enable amdgpu tearfree
+qemu=yes # set yes to install qemu and virt-manager
 firefox_deb=yes # set yes to install firefox from official deb
 sensors=yes # set yes to customize lm-sensors
 lxqt_config=no # set yes to copy customized lxqt config
@@ -21,7 +22,12 @@ install () {
   	if [[ $amdgpu_tearfree == "yes" ]]; then
 		sudo cp ./config/20-amdgpu-tearfree.conf /etc/X11/xorg.conf.d/
    	fi
-    
+
+    	# install qemu and virt-manager
+     	if [[ $qemu == "yes" ]]; then
+     		sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+    	fi
+     	
 	# install firefox from official deb
 	if [[ $firefox_deb == "yes" ]]; then
 		sudo install -d -m 0755 /etc/apt/keyrings
@@ -118,6 +124,7 @@ printf "Start installation!!!!!!!!!!!\n"
 printf "88888888888888888888888888888\n"
 printf "Install Extra APps      : $extra_apps\n"
 printf "Xorg AMDGPU TearFree    : $amdgpu_tearfree\n"
+printf "QEMU KVM		: $qemu\n"
 printf "Firefox as DEB packages : $firefox_deb\n"
 printf "Custom lm-sensors config: $sensors\n"
 printf "Custom LXQt Config      : $lxqt_config\n"
