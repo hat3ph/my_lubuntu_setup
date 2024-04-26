@@ -33,9 +33,16 @@ install () {
      	if [[ $gaming == "yes" ]]; then
      		sudo apt-get install wine64 -y
        		sudo apt-get update
-       		sudo apt-get install libgl1:i386 libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386 zenity python3-cairo -y
+       		sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
+	 		fluid-soundfont-gs vulkan-tools -y
 	 	wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
-   		sudo dpk -i /tmp/lutris*.deb
+   		sudo dpkg -i /tmp/lutris*.deb
+
+     		# download winetrick https://wiki.winehq.org/Winetricks
+       		mkdir -p $HOME/.local/bin
+	 	wget -P /tmp https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+   		cp /tmp/winetricks $HOME/.local/bin/
+     		chmod +x $HOME/.local/bin/winetricks
     	fi
      	
 	# install firefox from official deb
