@@ -112,9 +112,9 @@ install () {
 		tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
 	  
 		# buuf icon from robson-66
-		#git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
-		#mkdir -p $HOME/.icons/Buuf
-		#cp -r /tmp/Buuf/* $HOME/.icons/Buuf && rm -rf $HOME/.icons/Buuf/.git
+		git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
+		mkdir -p $HOME/.icons/Buuf
+		cp -r /tmp/Buuf $HOME/.icons && rm -rf $HOME/.icons/Buuf/.git
 	  
 		# setup buuf-icons-for-plasma icon theme
 		git clone https://www.opencode.net/phob1an/buuf-icons-for-plasma.git /tmp/buuf-icons-for-plasma
