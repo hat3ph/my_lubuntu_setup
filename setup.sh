@@ -11,6 +11,7 @@ redshift_config=yes # set yes to copy customized redshift config
 pcmanfmqt_rar=no # set yes to enable rar support in pcmanfm-qt
 theming=yes # set yes to enable icon and theming
 bashrc=yes # set yes to customized my bashrc
+smartd=yes # set yes to install and configure smartd
 
 install () {
 	# install additional packages
@@ -29,31 +30,44 @@ install () {
 		sudo cp ./config/20-amdgpu-custom.conf /etc/X11/xorg.conf.d/
    	fi
 
-    	# install qemu and virt-manager
-     	if [[ $qemu == "yes" ]]; then
-     		sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
-    	fi
+    # install qemu and virt-manager
+    if [[ $qemu == "yes" ]]; then
+    	sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+    fi
 
-     	# install wine and lutris
-     	if [[ $gaming == "yes" ]]; then
-     		sudo apt-get install wine64 -y
-       		sudo apt-get update
-       		sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
-	 		fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth gamemode -y
-	 	wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
+    # install wine and lutris
+    if [[ $gaming == "yes" ]]; then
+    	sudo apt-get install wine64 -y
+    	sudo apt-get update
+    	sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
+			fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth gamemode -y
+		wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
    		sudo dpkg -i /tmp/lutris*.deb
 
 		# install MangoHud
-     		wget -P /tmp https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-0.7.1.tar.gz
-       		tar -zxvf /tmp/MangoHud*.tar.gz -C /tmp
+    	wget -P /tmp https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-0.7.1.tar.gz
+    	tar -zxvf /tmp/MangoHud*.tar.gz -C /tmp
 	 	(cd /tmp/MangoHud && ./mangohud-setup.sh install)
 
-     		# download winetrick https://wiki.winehq.org/Winetricks
-       		mkdir -p $HOME/.local/bin
+     	# download winetrick https://wiki.winehq.org/Winetricks
+       	mkdir -p $HOME/.local/bin
 	 	wget -P /tmp https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
    		cp /tmp/winetricks $HOME/.local/bin/
-     		chmod +x $HOME/.local/bin/winetricks
-    	fi
+     	chmod +x $HOME/.local/bin/winetricks
+    fi
+
+	# install and configure smartd to monitor disks
+	if [[ $smartd == "yes" ]]; then
+		# edit /etc/smartd.conf with DEVICESCAN -a -o on -S on -n standby,q -W 4,50,55 -m @smartdnotify -M daily
+		sudo apt-get install libnotify-bin smartmontools -y
+		sudo cp ./scripts/smartdnotify /etc/smartmontools/smartd_warning.d/
+		sudo chmod +x /etc/smartmontools/smartd_warning.d/smartdnotify
+
+		# schedule run smart disk test
+		sudo cp ./config/run_smartd_test /etc/cron.d/
+		sudo cp ./scripts/run_smartd_test /usr/local/bin/
+		sudo chmod +x /usr/local/bin/run_smartd_test
+	fi
      	
 	# install firefox from official deb
 	if [[ $firefox_deb == "yes" ]]; then
@@ -146,8 +160,8 @@ printf "Start installation!!!!!!!!!!!\n"
 printf "88888888888888888888888888888\n"
 printf "Install Extra APps      : $extra_apps\n"
 printf "Xorg AMDGPU Config      : $amdgpu_config\n"
-printf "QEMU KVM		: $qemu\n"
-printf "Wine and Lutris  	: $gaming\n"
+printf "QEMU KVM		        : $qemu\n"
+printf "Wine and Lutris  	    : $gaming\n"
 printf "Firefox as DEB packages : $firefox_deb\n"
 printf "Custom lm-sensors config: $sensors\n"
 printf "Custom LXQt Config      : $lxqt_config\n"
@@ -155,6 +169,7 @@ printf "Redshift Config         : $redshift_config\n"
 printf "PCmanfm-Qt Rar support  : $pcmanfmqt_rar\n"
 printf "Desktop Theming         : $theming\n"
 printf "My Bashrc               : $bashrc\n"
+printf "Smartd notification     : $smartd\n"
 printf "88888888888888888888888888888\n"
 
 while true; do
