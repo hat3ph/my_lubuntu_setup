@@ -17,7 +17,7 @@ install () {
 	# install additional packages
 	if [[ $extra_apps == "yes" ]]; then
 		sudo apt-get update
-		sudo apt-get install vlc geany transmission-qt rar lm-sensors -y
+		sudo apt-get install vlc geany transmission-qt rar -y
 
   		# install yt-dlp
     		mkdir -p $HOME/.local/bin
@@ -30,31 +30,31 @@ install () {
 		sudo cp ./config/20-amdgpu-custom.conf /etc/X11/xorg.conf.d/
    	fi
 
-    # install qemu and virt-manager
-    if [[ $qemu == "yes" ]]; then
-    	sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
-    fi
+	# install qemu and virt-manager
+ 	if [[ $qemu == "yes" ]]; then
+  		sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+    	fi
 
-    # install wine and lutris
-    if [[ $gaming == "yes" ]]; then
-    	sudo apt-get install wine64 -y
-    	sudo apt-get update
-    	sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
+	# install wine and lutris
+ 	if [[ $gaming == "yes" ]]; then
+  		sudo apt-get install wine64 -y
+    		sudo apt-get update
+      		sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
 			fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth gamemode -y
 		wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
    		sudo dpkg -i /tmp/lutris*.deb
 
 		# install MangoHud
-    	wget -P /tmp https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-0.7.1.tar.gz
-    	tar -zxvf /tmp/MangoHud*.tar.gz -C /tmp
+  		wget -P /tmp https://github.com/flightlessmango/MangoHud/releases/download/v0.7.1/MangoHud-0.7.1.tar.gz
+    		tar -zxvf /tmp/MangoHud*.tar.gz -C /tmp
 	 	(cd /tmp/MangoHud && ./mangohud-setup.sh install)
-
-     	# download winetrick https://wiki.winehq.org/Winetricks
-       	mkdir -p $HOME/.local/bin
+   
+   		# download winetrick https://wiki.winehq.org/Winetricks
+     		mkdir -p $HOME/.local/bin
 	 	wget -P /tmp https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
    		cp /tmp/winetricks $HOME/.local/bin/
-     	chmod +x $HOME/.local/bin/winetricks
-    fi
+     		chmod +x $HOME/.local/bin/winetricks
+       	fi
 
 	# install and configure smartd to monitor disks
 	if [[ $smartd == "yes" ]]; then
@@ -82,6 +82,7 @@ install () {
 	fi
 	
 	if [[ $sensors == "yes" ]]; then
+ 		sudo apt-get install lm-sensors -y
 		# setup disk drive temp module
 		echo drivetemp | sudo tee /etc/modules-load.d/drivetemp.conf
 	  
