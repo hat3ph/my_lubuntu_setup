@@ -145,6 +145,19 @@ install () {
 		mkdir -p $HOME/.config/geany/colorschemes
 		git clone https://github.com/geany/geany-themes.git /tmp/geany-themes
 		cp -r /tmp/geany-themes/colorschemes/* $HOME/.config/geany/colorschemes/
+
+  		# install Dracula theme
+  		mkdir -p $HOME/.local/share/lxqt/{palettes,themes}
+    		git clone https://github.com/AzumaHazuki/lxqt-themes-dracula /tmp/lxqt-themes-dracula
+      		cp -r /tmp/lxqt-themes-dracula/{palettes,themes} $HOME/.local/share/lxqt/
+
+		sudo mkdir -p /usr/share/qtermwidget5/color-schemes
+  		git clone https://github.com/dracula/qterminal.git /tmp/qterminal
+    		sudo cp /tmp/qterminal/Dracula.colorscheme /usr/share/qtermwidget5/color-schemes
+
+      		sudo mkdir -p $HOME/.themes
+		git clone https://github.com/dracula/openbox /tmp/openbox
+  		cp -r /tmp/openbox/Dracula* $HOME/.themes/
 	fi
 	
 	# setup my customer bash alias
