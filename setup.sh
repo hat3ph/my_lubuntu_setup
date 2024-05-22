@@ -117,7 +117,7 @@ install () {
 		cp ./local/share/file-manager/actions/rar-*.desktop $HOME/.local/share/file-manager/actions/
 		echo "Remember to change PCManFM-Qt's Archiver intergration to lxqt-archiver under Preferences > Advanced."
 		# actions to open terminal in desktop. Not need for LXQt v1.3
-		cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/share/file-manager/actions/
+		#cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/share/file-manager/actions/
 	fi
 	
 	# setup buuf icon theme
@@ -155,7 +155,7 @@ install () {
   		git clone https://github.com/dracula/qterminal.git /tmp/qterminal
     		sudo cp /tmp/qterminal/Dracula.colorscheme /usr/share/qtermwidget5/color-schemes
 
-      		sudo mkdir -p $HOME/.themes
+      		mkdir -p $HOME/.themes
 		git clone https://github.com/dracula/openbox /tmp/openbox
   		cp -r /tmp/openbox/Dracula* $HOME/.themes/
 	fi
