@@ -50,10 +50,10 @@ install () {
 	 	(cd /tmp/MangoHud && ./mangohud-setup.sh install)
    
    		# download winetrick https://wiki.winehq.org/Winetricks
-     		mkdir -p $HOME/.local/bin
-	 	wget -P /tmp https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-   		cp /tmp/winetricks $HOME/.local/bin/
-     		chmod +x $HOME/.local/bin/winetricks
+     		#mkdir -p $HOME/.local/bin
+	 	#wget -P /tmp https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+   		#cp /tmp/winetricks $HOME/.local/bin/
+     		#chmod +x $HOME/.local/bin/winetricks
        	fi
 
 	# install and configure smartd to monitor disks
