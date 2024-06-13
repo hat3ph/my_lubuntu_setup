@@ -12,6 +12,7 @@ pcmanfmqt_rar=no # set yes to enable rar support in pcmanfm-qt
 theming=yes # set yes to enable icon and theming
 bashrc=yes # set yes to customized my bashrc
 smartd=yes # set yes to install and configure smartd
+swapfile=no # set yes to enable swapfile
 
 install () {
 	# install additional packages
@@ -165,6 +166,15 @@ install () {
 		echo -e "\nalias temps='watch -n 1 sensors amdgpu-* drivetemp-* k10temp-* asus_wmi_sensors-*'" | tee -a $HOME/.bashrc
 		echo "alias syslog='tail -f /var/log/syslog'" | tee -a $HOME/.bashrc
 	fi
+
+  	# enable swapfile
+   	if [[ $swapfile == "yes" ]]; then
+   		sudo fallocate -l 4G /swapfile
+    		sudo chmod 600 /swapfile
+      		sudo mkswap /swapfile
+		sudo swapon /swapfile
+  		echo "/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab
+    	fi	
 	
 	echo "Remember to logoff and choose the new icon themes from LXQt Apperance Configuration."
 }
@@ -174,8 +184,8 @@ printf "Start installation!!!!!!!!!!!\n"
 printf "88888888888888888888888888888\n"
 printf "Install Extra APps      : $extra_apps\n"
 printf "Xorg AMDGPU Config      : $amdgpu_config\n"
-printf "QEMU KVM		        : $qemu\n"
-printf "Wine and Lutris  	    : $gaming\n"
+printf "QEMU KVM		: $qemu\n"
+printf "Wine and Lutris  	: $gaming\n"
 printf "Firefox as DEB packages : $firefox_deb\n"
 printf "Custom lm-sensors config: $sensors\n"
 printf "Custom LXQt Config      : $lxqt_config\n"
@@ -184,6 +194,7 @@ printf "PCmanfm-Qt Rar support  : $pcmanfmqt_rar\n"
 printf "Desktop Theming         : $theming\n"
 printf "My Bashrc               : $bashrc\n"
 printf "Smartd notification     : $smartd\n"
+printf "Enable Swapfile         : $swapfile\n"
 printf "88888888888888888888888888888\n"
 
 while true; do
