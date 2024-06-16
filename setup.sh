@@ -88,7 +88,7 @@ install () {
 		echo drivetemp | sudo tee /etc/modules-load.d/drivetemp.conf
 	  
 		# setup sensors for ASUS X370 Crosshair
-		echo -e "chip "asus_wmi_sensors-virtual-0"\n" | sudo tee /etc/sensors.d/asus_wmi_sensors.conf
+		echo -e 'chip "asus_wmi_sensors-virtual-0"\n' | sudo tee /etc/sensors.d/asus_wmi_sensors.conf
 		echo "ignore fan4 # chassis fan 3" | sudo tee -a /etc/sensors.d/asus_wmi_sensors.conf
 		echo "ignore fan5 # CPU optional fan" | sudo tee -a /etc/sensors.d/asus_wmi_sensors.conf
 		echo "ignore fan6 # water pump" | sudo tee -a /etc/sensors.d/asus_wmi_sensors.conf
