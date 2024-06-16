@@ -156,9 +156,11 @@ install () {
   		git clone https://github.com/dracula/qterminal.git /tmp/qterminal
     		sudo cp /tmp/qterminal/Dracula.colorscheme /usr/share/qtermwidget5/color-schemes
 
+  		# install openbox themes
       		mkdir -p $HOME/.themes
-		git clone https://github.com/dracula/openbox /tmp/openbox
-  		cp -r /tmp/openbox/Dracula* $HOME/.themes/
+		#git clone https://github.com/dracula/openbox /tmp/openbox
+  		git clone https://github.com/terroo/openbox-themes /tmp/openbox-themes
+  		cp -r /tmp/openbox-themes/* $HOME/.themes/
 	fi
 	
 	# setup my customer bash alias
