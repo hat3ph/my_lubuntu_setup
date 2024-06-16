@@ -163,7 +163,7 @@ install () {
 	
 	# setup my customer bash alias
 	if [[ $bashrc == "yes" ]]; then
-		echo -e "\nalias temps='watch -n 1 sensors amdgpu-* drivetemp-* k10temp-* asus_wmi_sensors-*'" | tee -a $HOME/.bashrc
+		echo -e "\nalias temps='watch -n 1 sensors amdgpu-pci-* drivetemp-* k10temp-* asus_wmi_sensors-*'" | tee -a $HOME/.bashrc
 		echo "alias syslog='tail -f /var/log/syslog'" | tee -a $HOME/.bashrc
 	fi
 
