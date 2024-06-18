@@ -157,10 +157,17 @@ install () {
     		sudo cp /tmp/qterminal/Dracula.colorscheme /usr/share/qtermwidget5/color-schemes
 
   		# install openbox themes
-      		mkdir -p $HOME/.themes
+      		mkdir -p $HOME/.local/share/themes
 		#git clone https://github.com/dracula/openbox /tmp/openbox
   		git clone https://github.com/terroo/openbox-themes /tmp/openbox-themes
   		cp -r /tmp/openbox-themes/* $HOME/.themes/
+
+    		# install Nordic GTK theme
+      		mkdir -p $HOME/.local/share/themes
+		wget -P https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic.tar.xz -C /tmp
+  		tar -xf /tmp/Nordic.tar.xz -C $HOME/.local/share/themes
+  		wget -P https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic-darker.tar.xz -C /tmp
+    		tar -xf /tmp/Nordic-darker.tar.xz -C $HOME/.local/share/themes
 	fi
 	
 	# setup my customer bash alias
