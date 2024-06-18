@@ -160,13 +160,13 @@ install () {
       		mkdir -p $HOME/.local/share/themes
 		#git clone https://github.com/dracula/openbox /tmp/openbox
   		git clone https://github.com/terroo/openbox-themes /tmp/openbox-themes
-  		cp -r /tmp/openbox-themes/* $HOME/.themes/
+  		cp -r /tmp/openbox-themes/* $HOME/.local/share/themes/
 
     		# install Nordic GTK theme
       		mkdir -p $HOME/.local/share/themes
-		wget -P https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic.tar.xz -C /tmp
+		wget -P /tmp https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic.tar.xz
   		tar -xf /tmp/Nordic.tar.xz -C $HOME/.local/share/themes
-  		wget -P https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic-darker.tar.xz -C /tmp
+  		wget -P /tmp https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic-darker.tar.xz
     		tar -xf /tmp/Nordic-darker.tar.xz -C $HOME/.local/share/themes
 	fi
 	
