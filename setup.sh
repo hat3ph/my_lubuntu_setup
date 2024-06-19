@@ -7,7 +7,7 @@ gaming=yes # set yes to install wine and lutris
 firefox_deb=yes # set yes to install firefox from official deb
 sensors=yes # set yes to customize lm-sensors
 lxqt_config=no # set yes to copy customized lxqt config
-redshift_config=yes # set yes to copy customized redshift config
+redshift_config=no # set yes to copy customized redshift config
 pcmanfmqt_rar=no # set yes to enable rar support in pcmanfm-qt
 theming=yes # set yes to enable icon and theming
 bashrc=yes # set yes to customized my bashrc
@@ -123,24 +123,24 @@ install () {
 	
 	# setup buuf icon theme
 	if [[ $theming == "yes" ]]; then
-		mkdir -p $HOME/.icons
+		mkdir -p $HOME/.local/share/icons
 		wget -P /tmp http://buuficontheme.free.fr/buuf3.46.tar.xz
-		tar -xvf /tmp/buuf*.tar.xz -C $HOME/.icons
+		tar -xvf /tmp/buuf*.tar.xz -C $HOME/.local/share/icons
 	  
 		# buuf icon from robson-66
 		git clone https://github.com/robson-66/Buuf.git /tmp/Buuf
-		mkdir -p $HOME/.icons/Buuf
-		cp -r /tmp/Buuf $HOME/.icons && rm -rf $HOME/.icons/Buuf/.git
+		mkdir -p $HOME/.local/share/icons
+		cp -r /tmp/Buuf $HOME/.local/share/icons && rm -rf $HOME/.local/share/icons/Buuf/.git
 	  
 		# setup buuf-icons-for-plasma icon theme
 		git clone https://www.opencode.net/phob1an/buuf-icons-for-plasma.git /tmp/buuf-icons-for-plasma
-		mkdir -p $HOME/.icons/buuf-icons-for-plasma
-		cp -r /tmp/buuf-icons-for-plasma/{16x16,22x22,32x32,48x48,64x64,128x128,index.theme,licenses} $HOME/.icons/buuf-icons-for-plasma
+		mkdir -p $HOME/.local/share/icons/buuf-icons-for-plasma
+		cp -r /tmp/buuf-icons-for-plasma/{16x16,22x22,32x32,48x48,64x64,128x128,index.theme,licenses} $HOME/.local/share/icons/buuf-icons-for-plasma
 	  
 		# install Gruvbox-Plus-Dark icon theme
 		git clone https://github.com/SylEleuth/gruvbox-plus-icon-pack.git /tmp/gruvbox-plus-icon-pack
-		mkdir -p $HOME/.icons
-		cp -r /tmp/gruvbox-plus-icon-pack/Gruvbox-Plus-Dark $HOME/.icons/
+		mkdir -p $HOME/.local/share/icons
+		cp -r /tmp/gruvbox-plus-icon-pack/Gruvbox-Plus-Dark $HOME/.local/share/icons
 
   		# add additional geany colorscheme
 		mkdir -p $HOME/.config/geany/colorschemes
