@@ -147,10 +147,11 @@ install () {
 		git clone https://github.com/geany/geany-themes.git /tmp/geany-themes
 		cp -r /tmp/geany-themes/colorschemes/* $HOME/.config/geany/colorschemes/
 
-  		# install Dracula theme
+  		# install Dracula theme for LXQt
   		mkdir -p $HOME/.local/share/lxqt/{palettes,themes}
     		git clone https://github.com/AzumaHazuki/lxqt-themes-dracula /tmp/lxqt-themes-dracula
-      		cp -r /tmp/lxqt-themes-dracula/{palettes,themes} $HOME/.local/share/lxqt/
+      		cp -r /tmp/lxqt-themes-dracula/palettes/* $HOME/.local/share/lxqt/palettes
+		cp -r /tmp/lxqt-themes-dracula/themes $HOME/.local/share/lxqt/themes/Dracula
 
 		sudo mkdir -p /usr/share/qtermwidget5/color-schemes
   		git clone https://github.com/dracula/qterminal.git /tmp/qterminal
