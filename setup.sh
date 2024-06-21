@@ -8,7 +8,7 @@ firefox_deb=yes # set yes to install firefox from official deb
 sensors=yes # set yes to customize lm-sensors
 lxqt_config=no # set yes to copy customized lxqt config
 redshift_config=no # set yes to copy customized redshift config
-pcmanfmqt_rar=no # set yes to enable rar support in pcmanfm-qt
+pcmanfmqt_action=no # set yes to enable extra in pcmanfm-qt
 theming=yes # set yes to enable icon and theming
 bashrc=yes # set yes to customized my bashrc
 smartd=yes # set yes to install and configure smartd
@@ -21,8 +21,8 @@ install () {
 		sudo apt-get install vlc geany transmission-qt rar -y
 
   		# install yt-dlp
-    		mkdir -p $HOME/.local/bin
-    		wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O $HOME/.local/bin/yt-dlp
+    	mkdir -p $HOME/.local/bin
+    	wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O $HOME/.local/bin/yt-dlp
 		chmod a+rx $HOME/.local/bin/yt-dlp
 	fi
 
@@ -39,8 +39,8 @@ install () {
 	# install wine and lutris
  	if [[ $gaming == "yes" ]]; then
   		sudo apt-get install wine64 -y
-    		sudo apt-get update
-      		sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
+    	sudo apt-get update
+      	sudo apt-get install python3-lxml python3-setproctitle python3-magic gir1.2-webkit2-4.1 cabextract \
 			fluid-soundfont-gs vulkan-tools python3-protobuf python3-evdev fluidsynth gamemode -y
 		wget -P /tmp https://github.com/lutris/lutris/releases/download/v0.5.17/lutris_0.5.17_all.deb
    		sudo dpkg -i /tmp/lutris*.deb
@@ -51,10 +51,10 @@ install () {
 	 	(cd /tmp/MangoHud && ./mangohud-setup.sh install)
    
    		# download winetrick https://wiki.winehq.org/Winetricks
-     		#mkdir -p $HOME/.local/bin
+     	#mkdir -p $HOME/.local/bin
 	 	#wget -P /tmp https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
    		#cp /tmp/winetricks $HOME/.local/bin/
-     		#chmod +x $HOME/.local/bin/winetricks
+     	#chmod +x $HOME/.local/bin/winetricks
        	fi
 
 	# install and configure smartd to monitor disks
@@ -112,10 +112,10 @@ install () {
 	fi
 	
 	# create file-manager actions directory
-	if [[ $pcmanfmqt_rar == "yes" ]]; then
+	if [[ $pcmanfmqt_action == "yes" ]]; then
 		mkdir -p $HOME/.local/share/file-manager/actions
 		# actions file for extract rar file
-		cp ./local/share/file-manager/actions/rar-*.desktop $HOME/.local/share/file-manager/actions/
+		cp ./local/share/file-manager/actions/*-extract-*.desktop $HOME/.local/share/file-manager/actions/
 		echo "Remember to change PCManFM-Qt's Archiver intergration to lxqt-archiver under Preferences > Advanced."
 		# actions to open terminal in desktop. Not need for LXQt v1.3
 		#cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/share/file-manager/actions/
@@ -149,26 +149,26 @@ install () {
 
   		# install Dracula theme for LXQt
   		mkdir -p $HOME/.local/share/lxqt/{palettes,themes}
-    		git clone https://github.com/AzumaHazuki/lxqt-themes-dracula /tmp/lxqt-themes-dracula
-      		cp -r /tmp/lxqt-themes-dracula/palettes/* $HOME/.local/share/lxqt/palettes
+    	git clone https://github.com/AzumaHazuki/lxqt-themes-dracula /tmp/lxqt-themes-dracula
+      	cp -r /tmp/lxqt-themes-dracula/palettes/* $HOME/.local/share/lxqt/palettes
 		cp -r /tmp/lxqt-themes-dracula/themes $HOME/.local/share/lxqt/themes/Dracula
 
 		sudo mkdir -p /usr/share/qtermwidget5/color-schemes
   		git clone https://github.com/dracula/qterminal.git /tmp/qterminal
-    		sudo cp /tmp/qterminal/Dracula.colorscheme /usr/share/qtermwidget5/color-schemes
+    	sudo cp /tmp/qterminal/Dracula.colorscheme /usr/share/qtermwidget5/color-schemes
 
   		# install openbox themes
-      		mkdir -p $HOME/.local/share/themes
+      	mkdir -p $HOME/.local/share/themes
 		#git clone https://github.com/dracula/openbox /tmp/openbox
   		git clone https://github.com/terroo/openbox-themes /tmp/openbox-themes
   		cp -r /tmp/openbox-themes/* $HOME/.local/share/themes/
 
-    		# install Nordic GTK theme
-      		mkdir -p $HOME/.local/share/themes
+    	# install Nordic GTK theme
+      	mkdir -p $HOME/.local/share/themes
 		wget -P /tmp https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic.tar.xz
   		tar -xf /tmp/Nordic.tar.xz -C $HOME/.local/share/themes
   		wget -P /tmp https://github.com/EliverLara/Nordic/releases/download/v2.2.0/Nordic-darker.tar.xz
-    		tar -xf /tmp/Nordic-darker.tar.xz -C $HOME/.local/share/themes
+    	tar -xf /tmp/Nordic-darker.tar.xz -C $HOME/.local/share/themes
 	fi
 	
 	# setup my customer bash alias
