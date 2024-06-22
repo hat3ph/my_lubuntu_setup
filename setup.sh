@@ -111,14 +111,13 @@ install () {
 		cp ./config/redshift.conf $HOME/.config/
 	fi
 	
-	# create file-manager actions directory
+	# create PCManFM-Qt custom actions files
 	if [[ $pcmanfmqt_action == "yes" ]]; then
 		mkdir -p $HOME/.local/share/file-manager/actions
-		# actions file for extract rar file
-		cp ./local/share/file-manager/actions/*-extract-*.desktop $HOME/.local/share/file-manager/actions/
+		cp ./local/share/file-manager/actions/*.desktop $HOME/.local/share/file-manager/actions/
 		echo "Remember to change PCManFM-Qt's Archiver intergration to lxqt-archiver under Preferences > Advanced."
-		# actions to open terminal in desktop. Not need for LXQt v1.3
-		#cp ./local/share/file-manager/actions/open_in_terminal.desktop $HOME/.local/share/file-manager/actions/
+		# actions to open terminal in desktop. Not needed for LXQt v1.3 and above
+		rm $HOME/.local/share/file-manager/actions/open_in_terminal.desktop
 	fi
 	
 	# setup buuf icon theme
