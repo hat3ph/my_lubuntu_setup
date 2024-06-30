@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file=/var/local/smartd.lock
+file=/var/lock/smartd.lock
 day=30
 if [[ ! -f "$file" ]]; then
         smartctl --test=short /dev/sda
